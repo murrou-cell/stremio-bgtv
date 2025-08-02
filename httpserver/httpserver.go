@@ -16,9 +16,14 @@ func Start(port string) {
 	http.HandleFunc("/stream/tv/", streamHandler)
 	http.HandleFunc("/catalog/tv/channels", catalogHandler)
 	http.HandleFunc("/meta/tv/", metaHandler)
+	http.HandleFunc("/", redirectToManifest)
 
 	log.Println("Stremio Addon listening on :" + port + "...")
 	log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func redirectToManifest(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/manifest.json", http.StatusFound)
 }
 
 func manifestHandler(w http.ResponseWriter, r *http.Request) {
