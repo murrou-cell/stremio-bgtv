@@ -1,0 +1,6 @@
+services:
+  addon:
+    image: ghcr.io/murrou-cell/stremio-bgtv:latest
+    container_name: stremio-bgtv
+    ports:
+      - "8080:8080"

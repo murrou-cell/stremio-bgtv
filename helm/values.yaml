@@ -1,0 +1,21 @@
+readme:
+  - path: stremio-bgtv
+    img: https://www.shutterstock.com/image-vector/television-icon-retro-style-600nw-1182885058.jpg
+
+tailscaleIngress:
+  enabled: true
+  host: stremio-bgtv
+  serviceName: stremio-bgtv
+  servicePort: 8080
+  funnel: true
+
+image:
+  repository: ghcr.io/murrou-cell/stremio-bgtv
+  tag: main
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+containerPort: 8080

@@ -1,0 +1,5 @@
+apiVersion: v2
+name: stremio-bgtv
+description: A Helm chart for stremio-bgtv
+version: 0.1.0
+appVersion: "latest"
