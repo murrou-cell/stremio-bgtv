@@ -24,12 +24,18 @@ func Start(port string) {
 func manifestHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
+	conf, err := config.LoadConfig()
+	if err != nil {
+		http.Error(w, "Failed to load config: "+err.Error(), 500)
+		return
+	}
 
 	manifest := map[string]interface{}{
 		"id":          "stremio-bgtv",
 		"version":     "1.0.0",
 		"name":        "Live Bulgarian TV",
 		"description": "Live Bulgarian TV channels",
+		"logo":        conf.DefaultLogo,
 		"resources": []interface{}{
 			"catalog",
 			map[string]interface{}{
